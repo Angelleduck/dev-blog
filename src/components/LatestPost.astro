@@ -1,29 +1,39 @@
-<section class="cs-container mb-25">
-  <h3>Latest Post</h3>
-  <div class="grid grid-cols-3 gap-5 mb-8">
-    {Array.from({ length: 12 }).map((item) => (
-      <div class="border rounded-xl border-[#E8E8EA] p-4">
-        <div class="w-90 h-60 bg-yellow-300 rounded-md mb-6"></div>
-        <div class="rounded-md bg-[#4b6bfb]/5 w-max px-2.5 py-1 mb-4">
-          <p class="text-[14px] font-medium text-[#4B6BFB]">Techonology</p>
-        </div>
-        <p class="font-semibold text-[24px] mb-5 leading-7">
-          The Impact of Technology on the Workplace: How Technology is Changing
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<section class="cs-container mb-25 px-4">
+  <h2 class="mb-6 text-2xl font-semibold">Latest Posts</h2>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {posts.map((post) => (
+      <a
+        href={`/blog/${post.id}/`}
+        class="block rounded-xl border border-[#E8E8EA] p-6 hover:border-[#4B6BFB] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4B6BFB]"
+      >
+        <Image
+          src={post.data.cover}
+          alt={post.data.coverAlt}
+          width={600}
+          class="mb-6 aspect-video w-full rounded-md object-cover"
+        />
+        <span class="mb-4 inline-block rounded-md bg-[#4b6bfb]/5 px-2.5 py-1 text-sm font-medium text-[#4B6BFB]">
+          {post.data.category}
+        </span>
+        <h3 class="mb-3 text-2xl font-semibold leading-7">{post.data.title}</h3>
+        <p class="mb-5 text-[#696a75]">{post.data.description}</p>
+        <p class="text-sm text-[#97989F]">
+          {post.data.pubDate.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </p>
-        <div class="flex gap-3 items-center">
-          <div class="w-9 h-9 bg-blue-400 rounded-full" />
-          <div class="flex gap-5">
-            <p class="text-[#97989F]">Jason Fransisco</p>
-            <p class="text-[#97989F]">Jason Fransisco</p>
-          </div>
-        </div>
-      </div>
+      </a>
     ))}
   </div>
-  <button
-    class="border border-[#696a75/30] rounded-md py-3 px-5
-  block mx-auto cursor-pointer"
-  >
-    View All Post
-  </button>
 </section>

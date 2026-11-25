@@ -1,9 +1,46 @@
 ---
+import Header from "@/components/Header.astro";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
 ---
 
 <Layout>
-  <main>
-    <article></article>
+  <Header />
+  <main class="px-4 pb-20">
+    <article class="mx-auto w-full max-w-200">
+      <p class="mb-3 text-sm font-medium text-[#4B6BFB]">
+        {post.data.category}
+      </p>
+      <h1 class="mb-3 text-4xl font-semibold">{post.data.title}</h1>
+      <p class="mb-10 text-sm text-[#97989F]">
+        {post.data.pubDate.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </p>
+      <Image
+        src={post.data.cover}
+        alt={post.data.coverAlt}
+        width={800}
+        class="mb-10 w-full rounded-xl"
+      />
+      <div
+        class="[&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold
+          [&_p]:mb-4 [&_p]:leading-7 [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-6
+          [&_li]:mb-2 [&_code]:rounded [&_code]:bg-gray-100 [&_code]:px-1
+          [&_pre]:mb-6 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:p-4
+          [&_pre]:text-sm [&_pre_code]:bg-transparent [&_pre_code]:p-0"
+      >
+        <slot />
+      </div>
+    </article>
   </main>
 </Layout>

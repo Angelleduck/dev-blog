@@ -2,17 +2,18 @@
 import Logo from "@/assets/logo.svg";
 ---
 
-<header class="cs-container py-8 mb-6">
-  <nav class="flex justify-between items-center">
-    <div>
-      <Logo class="fill-black" />
-    </div>
-    <ul class="flex gap-10">
-      <li>Home</li>
-      <li>Home</li>
-      <li>Home</li>
-      <li>Home</li>
-    </ul>
-    <div>Search</div>
-  </nav>
+<header class="cs-container mb-6 flex items-center justify-between px-4 py-8">
+  <Logo class="fill-black" />
+  <label class="inline-flex cursor-pointer items-center">
+    <input type="checkbox" role="switch" aria-label="Dark mode" class="peer sr-only" />
+    <span
+      aria-hidden="true"
+      class="relative inline-block h-7 w-13 rounded-full bg-gray-300 transition-colors
+        after:absolute after:top-1 after:left-1 after:size-5 after:rounded-full
+        after:bg-white after:shadow-sm after:transition-transform
+        peer-checked:bg-[#4B6BFB] peer-checked:after:translate-x-6
+        peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
+        peer-focus-visible:outline-[#4B6BFB]"
+    ></span>
+  </label>
 </header>

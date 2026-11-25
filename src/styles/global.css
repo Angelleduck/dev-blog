@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme{
+
+}
+
+@layer components{
+  .cs-container{
+    @apply max-w-304 mx-auto;
+  }
+}

@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image } from "astro:assets";
+import Header from "../components/Header.astro";
+import LatestPost from "../components/LatestPost.astro";
+import Layout from "../layouts/Layout.astro";
+import Hero from "@/assets/Image.png";
+import Footer from "@/components/Footer.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <Header />
+  <section class="cs-container relative mb-36">
+    <Image src={Hero} alt={"Illustration"} />
+    <div
+      class="absolute bg-white shadow-sm max-w-149.5 rounded-xl left-10
+    -bottom-10 p-10"
+    >
+      <p class="font-semibold text-[36px] leading-10 mb-6">
+        The Impact of Technology on the Workplace: How Technology is Changing
+      </p>
+      <div class="flex gap-3 items-center">
+        <div class="w-9 h-9 bg-blue-400 rounded-full" />
+        <div class="flex gap-5">
+          <p class="text-[#97989F]">Jason Fransisco</p>
+          <p class="text-[#97989F]">Jason Fransisco</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="max-w-[750px] h-25 bg-[#E8E8EA] mx-auto mb-20"></div>
+  <LatestPost />
+  <Footer />
 </Layout>

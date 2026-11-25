@@ -1,0 +1,29 @@
+<section class="cs-container mb-25">
+  <h3>Latest Post</h3>
+  <div class="grid grid-cols-3 gap-5 mb-8">
+    {Array.from({ length: 12 }).map((item) => (
+      <div class="border rounded-xl border-[#E8E8EA] p-4">
+        <div class="w-90 h-60 bg-yellow-300 rounded-md mb-6"></div>
+        <div class="rounded-md bg-[#4b6bfb]/5 w-max px-2.5 py-1 mb-4">
+          <p class="text-[14px] font-medium text-[#4B6BFB]">Techonology</p>
+        </div>
+        <p class="font-semibold text-[24px] mb-5 leading-7">
+          The Impact of Technology on the Workplace: How Technology is Changing
+        </p>
+        <div class="flex gap-3 items-center">
+          <div class="w-9 h-9 bg-blue-400 rounded-full" />
+          <div class="flex gap-5">
+            <p class="text-[#97989F]">Jason Fransisco</p>
+            <p class="text-[#97989F]">Jason Fransisco</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  <button
+    class="border border-[#696a75/30] rounded-md py-3 px-5
+  block mx-auto cursor-pointer"
+  >
+    View All Post
+  </button>
+</section>
